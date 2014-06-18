@@ -58,7 +58,7 @@ sub register {
                     client_secret => $provider->{secret},
                     client_id     => $provider->{key},
                     code          => $c->param('code'),
-                    redirect_uri  => $c->url_for->to_abs->to_string,
+                    redirect_uri  => $args{redirect_uri} || $c->url_for->to_abs->to_string,
                     grant_type    => 'authorization_code',
                 };
                 if ($args{async} or $cb) {
